@@ -36,7 +36,7 @@
 				<select name="color" class="form-control" required>
 					<option value="" disabled selected>Choose Color</option>
 					{% for i in single_product.variation_set.colors %}
-						<option value="{{ i.variation_value | lower }} ">{{ i.variation_value}} </option>
+						<option value="{{ i.variation_value | lower }}">{{ i.variation_value }}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -47,7 +47,7 @@
 				<select name="size" class="form-control" required>
 					<option value="" disabled selected>Select Size</option>
 					{% for i in single_product.variation_set.sizes %}
-						<option value="{{ i.variation_value | lower }} ">{{ i.variation_value}} </option>
+						<option value="{{ i.variation_value | lower }}">{{ i.variation_value }}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -64,12 +64,9 @@
 	</div> <!-- row.// -->
 </div> <!-- card.// -->
 <!-- ============================ COMPONENT 1 END .// ================================= -->
-
 <br>
-
 <div class="row">
 			<div class="col-md-9">
-
 	<header class="section-heading">
 		<h3>Customer Reviews </h3>
 
