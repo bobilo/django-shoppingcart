@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect, get_object_or_404
 
+from accounts.models import UserProfile
 from carts.models import Cart, CartItem
 from store.models import Product, Variation
 
@@ -178,6 +179,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
 
 @login_required(login_url='login')
 def checkout(request, total=0, quantity=0, cart_items=None):
+    userprofile = UserProfile.objects.get(user_id=request.user.id)
     tax = 0
     grand_total = 0
     try:
@@ -199,6 +201,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         'quantity': quantity,
         'cart_items': cart_items,
         'tax': tax,
-        'grand_total': grand_total
+        'grand_total': grand_total,
+        'userprofile': userprofile
     }
     return render(request, 'store/checkout.html', context)
